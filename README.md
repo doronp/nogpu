@@ -11,7 +11,7 @@ latency. Data deleted within 24 hours. $99 one-time to download the model and a 
 script; it runs offline on any CPU, no account, no API.
 
 Measured example: on 3,000 rows of the public Banking77 set (77 intents), the $99 CPU model answered
-58.7% of requests alone, 94.7% accurate when it did (one-sided 95% lower bound 91.8%), about 4 ms
+66.7% of requests alone, 94.1% accurate when it did (one-sided 95% lower bound 91.4%), about 4 ms
 per decision.
 
 ## 1. Export your logs (local, stdlib only)
