@@ -20,12 +20,18 @@ per decision.
 python3 nogpu_export.py your-llm-logs.jsonl > nogpu.jsonl
 ```
 
-Reads OpenAI / Anthropic / LangChain / LiteLLM / Langfuse style logs and writes
+Reads OpenAI chat completions (stored completions joined with their messages, fine-tune JSONL,
+the Responses API), Anthropic Messages replies (tool_use included), Langfuse observations, traces
+and API pages, LangSmith runs, and Helicone exports made with `--include-body`, and writes
 `{"id", "text", "label"}` lines: the last human message and the decision the LLM returned.
+Label spellings that differ only in case, `_` vs space, a `Category:` prefix or trailing
+punctuation are merged, and every merge is listed.
 System prompts, earlier turns and tool results are never written out. Unrecognised rows are
 skipped. Use `--input-field` / `--label-field` for custom shapes; `--demo` runs the self-check.
 
-Already have `{"text": ..., "label": ...}` JSONL (40 to 10,000 rows)? Skip this step.
+Already have `{"text": ..., "label": ...}` rows (160 to 10,000; JSONL, a JSON array, or a CSV with
+text and label columns)? Skip this step. Fewer than 160 rows can't pass the 90% bar even when every
+answer is right.
 
 ## 2. Get the report
 
